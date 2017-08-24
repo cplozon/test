@@ -1,0 +1,75 @@
+
+      <div class="container">
+  <h1 id="title" class="text-center">Eat A Burger!</h1>
+
+  <div class="row">
+    <div class="col-md-12 text-center">
+     <img src="assets/img/burger.jpeg" id="burger-pic"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 text-center">
+      <h4 id="headline">Burgers You Can Devour!</h4>
+      <ul class="list-group noteaten">
+        {{#each burgers}}
+          {{#if this.devoured}}
+            {{else}}
+              <li class="list-group-item">
+                <form action = "/burgers/update/{{this.id}}?_method=PUT" method="POST">
+                  <input type="hidden" name="devoured" value="true">
+                  <button class="eat-btn" type="submit">Devour The {{this.burger_name}}
+                  </button>
+                </form>
+              </li>
+          {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+
+    <div class="col-md-6 text-center">
+      <h4 id="headline">Eaten Burgers</h4>
+      <ul class="list-group eaten">
+        {{#each burgers}}
+          {{#if this.devoured}}
+            <li class="list-group-item">
+              <form action = "burgers/delete/{{this.id }}?_method=DELETE" method="POST">
+                <button class="eat-btn" type="submit">Delete The {{this.burger_name}} From Eaten Burgers
+                </button>
+              </form>
+            </li>
+          {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+    </div>
+  </div>
+
+
+  <div class="row">
+
+    <div class="col-md-4"></div>
+
+    <div class="col-md-4 text-center">
+      <ul class="list-group add">
+        <li class="list-group-item">
+          <form action="/burgers/new" method="post">
+            <input class="form-control" name="burger" placeholder="Add A New Burger Here">
+            </input>
+            <button class="add btn" type="submit" id="add-burger">Add A Burger You Want To Eat!
+            </button>
+          </form>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-4"></div>
+  </div>
+</div>
+
+
+  
