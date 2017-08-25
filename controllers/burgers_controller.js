@@ -19,7 +19,7 @@ router.get('/burgers', function(req,res){
     });
 });
 
-router.post('/burgers/create', function(req,res){
+router.post('/burgers/new', function(req,res){
     burger.create(['burger_name', 'devoured'], [req.body.burger, 0], function(){
         res.redirect('/burgers');
     });
